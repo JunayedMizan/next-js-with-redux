@@ -10,6 +10,6 @@ export const addCount = () => (dispatch) => {
 }
 
 export const getPosts = () => async (dispatch) => {
-  const { data } = await Axios.get('http://localhost:5000/api/products')
+  const { data } = await Axios.get('https://jsonplaceholder.typicode.com/posts')
   dispatch({ type: actionTypes.POSTS, payload: data })
 }

@@ -10,6 +10,7 @@ export default function reducer(state = initialState, action) {
     case actionTypes.ADD:
       return { ...state, counter: state.counter + 1 }
     case actionTypes.POSTS:
+      console.log('POST LENGTH: ', action.payload.length)
       return { ...state, posts: action.payload }
     default:
       return state
