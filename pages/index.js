@@ -1,6 +1,6 @@
 import { wrapper } from '../store/store'
 import { useSelector, useDispatch } from 'react-redux'
-import { addCount } from '../store/count/action'
+import { addCount } from '../store/action'
 
 const index = () => {
   const dispatch = useDispatch()
