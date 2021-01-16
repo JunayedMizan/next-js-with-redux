@@ -1,21 +1,20 @@
 import { wrapper } from '../store/store'
 import { useSelector, useDispatch } from 'react-redux'
-import { addCount } from '../store/action'
+import { addCount, getPosts } from '../store/action'
 
 const index = () => {
   const dispatch = useDispatch()
-  const { count } = useSelector((state) => state.count)
+  const { counter, posts } = useSelector((state) => state.data)
   return (
     <div>
-      <style jsx>{`
-        div {
-          padding: 0 0 20px 0;
-        }
-      `}</style>
       <h1>
-        AddCount: <span>{count}</span>
+        AddCount: <span>{counter}</span>
       </h1>
       <button onClick={() => dispatch(addCount())}>Add To Count</button>
+
+      <h1>
+        Posts: <span>{posts.length}</span>
+      </h1>
     </div>
   )
 }
@@ -23,6 +22,7 @@ const index = () => {
 export const getServerSideProps = wrapper.getServerSideProps(
   async ({ store }) => {
     store.dispatch(addCount())
+    store.dispatch(getPosts())
   }
 )
 

@@ -10,6 +10,6 @@ export const addCount = () => (dispatch) => {
 }
 
 export const getPosts = () => async (dispatch) => {
-  const { data } = await Axios.get('/api/products')
-  dispatch({ type: POSTS, payload: data })
+  const { data } = await Axios.get('http://localhost:5000/api/products')
+  dispatch({ type: actionTypes.POSTS, payload: data })
 }

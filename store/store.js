@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { HYDRATE, createWrapper } from 'next-redux-wrapper'
 import thunkMiddleware from 'redux-thunk'
-import count from './reducer'
+import data from './reducer'
 
 const bindMiddleware = (middleware) => {
   if (process.env.NODE_ENV !== 'production') {
@@ -12,7 +12,7 @@ const bindMiddleware = (middleware) => {
 }
 
 const combinedReducer = combineReducers({
-  count,
+  data,
 })
 
 const reducer = (state, action) => {
@@ -21,7 +21,7 @@ const reducer = (state, action) => {
       ...state, // use previous state
       ...action.payload, // apply delta from hydration
     }
-    if (state.count.count) nextState.count.count = state.count.count // preserve count value on client side navigation
+    if (state.data.counter) nextState.data.counter = state.data.counter // preserve count value on client side navigation
     return nextState
   } else {
     return combinedReducer(state, action)
