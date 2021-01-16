@@ -21,7 +21,8 @@ const reducer = (state, action) => {
       ...state, // use previous state
       ...action.payload, // apply delta from hydration
     }
-    if (state.data.counter) nextState.data.counter = state.data.counter // preserve count value on client side navigation
+    if (state.data.counter) nextState.data.counter = state.data.counter // preserve counter value on client side navigation
+    if (state.data.posts) nextState.data.posts = state.data.posts // preserve posts value on client side navigation
     return nextState
   } else {
     return combinedReducer(state, action)
